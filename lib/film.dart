@@ -31,6 +31,17 @@ class _FilmState extends State<Film> {
           child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
+                FutureBuilder<Movie>(
+                  future: futureMovie,
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      return Text(snapshot.data!.title);
+                    } else if (snapshot.hasError) {
+                      return Text('${snapshot.error}');
+                    }
+                    return const CircularProgressIndicator();
+                  },
+                ),
                 const Text('[TITRE DU FILM]',
                     style: TextStyle(
                         color: Colors.white,
