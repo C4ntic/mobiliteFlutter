@@ -1,15 +1,28 @@
 import 'package:flutter/material.dart';
 
-class Film extends StatelessWidget {
-  Film({required this.title});
+import 'model/Movie.dart';
 
-  final String title;
+class Film extends StatefulWidget {
+  const Film({super.key});
+
+  @override
+  State<Film> createState() => _FilmState();
+}
+
+class _FilmState extends State<Film> {
+  late Future<Movie> futureMovie;
+
+  @override
+  void initState() {
+    super.initState();
+    futureMovie = fetchMovie();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(title),
+        title: const Text('[Titre film]'),
         backgroundColor: Colors.black,
       ),
       backgroundColor: const Color(0xFF2C393F),

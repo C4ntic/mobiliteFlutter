@@ -13,9 +13,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Film(title: 'Flutter Demo Home Page'),
+      home: const Film(),
       routes: <String, WidgetBuilder> {
-        '/film': (BuildContext context) => Film(title: '[Titre film]'),
+        '/film': (BuildContext context) => const Film(),
       },
     );
   }
