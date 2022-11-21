@@ -37,22 +37,22 @@ class _FilmState extends State<Film> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Text(mapMovie["Title"],
-                    style: TextStyle(
+                    style: const TextStyle(
                         color: Colors.white,
                         fontSize: 24,
                         fontWeight: FontWeight.bold)),
-                const Padding(
-                    padding: EdgeInsets.all(10),
-                    child: Text('[ANNEE]',
-                        style: TextStyle(
+                Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Text(mapMovie["Year"],
+                        style: const TextStyle(
                             color: Colors.white60,
                             fontWeight: FontWeight.bold))),
                 Image.network(
-                    "https://m.media-amazon.com/images/M/MV5BMDAzM2M0Y2UtZjRmZi00MzVlLTg4MjEtOTE3NzU5ZDVlMTU5XkEyXkFqcGdeQXVyNDUyOTg3Njg@._V1_SX300.jpg"),
-                const Padding(
-                    padding: EdgeInsets.all(15),
-                    child: Text('[DESCRIPTION DU FILM]',
-                        style: TextStyle(color: Colors.white)))
+                    mapMovie["Poster"]),
+                Padding(
+                    padding: const EdgeInsets.all(15),
+                    child: Text(mapMovie["Plot"],
+                        style: const TextStyle(color: Colors.white70)))
               ])),
     );
   }
