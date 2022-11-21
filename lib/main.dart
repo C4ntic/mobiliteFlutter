@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobiliteflutter/search.dart';
 import 'film.dart';
 
 void main() => runApp(const MyApp());
@@ -13,9 +14,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const Film(),
+      home: const Search(),
       routes: <String, WidgetBuilder> {
         '/film': (BuildContext context) => const Film(),
+        '/search': (BuildContext context) => const Search(),
       },
     );
   }
