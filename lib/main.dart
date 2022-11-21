@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mobiliteflutter/search.dart';
+import 'search.dart';
 import 'film.dart';
 
 void main() => runApp(const MyApp());
