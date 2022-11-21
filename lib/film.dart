@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'model/Movie.dart';
+import 'controller/Controller.dart';
 
 class Film extends StatefulWidget {
   const Film({super.key});
@@ -10,19 +10,24 @@ class Film extends StatefulWidget {
 }
 
 class _FilmState extends State<Film> {
-  late Future<Movie> futureMovie;
+  late Map<String,dynamic> mapMovie;
 
   @override
   void initState() {
     super.initState();
-    futureMovie = fetchMovie();
+    getMap();
   }
+
+  void getMap() async{
+    mapMovie = await fetchMovie();
+  }
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('[Titre film]'),
+        title: Text(mapMovie["Title"]),
         backgroundColor: Colors.black,
       ),
       backgroundColor: const Color(0xFF2C393F),
@@ -31,18 +36,7 @@ class _FilmState extends State<Film> {
           child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                FutureBuilder<Movie>(
-                  future: futureMovie,
-                  builder: (context, snapshot) {
-                    if (snapshot.hasData) {
-                      return Text(snapshot.data!.title);
-                    } else if (snapshot.hasError) {
-                      return Text('${snapshot.error}');
-                    }
-                    return const CircularProgressIndicator();
-                  },
-                ),
-                const Text('[TITRE DU FILM]',
+                Text(mapMovie["Title"],
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 24,
