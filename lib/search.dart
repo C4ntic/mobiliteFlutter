@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'model/Movie.dart';
-
 class Search extends StatefulWidget {
   const Search({super.key});
 
@@ -10,7 +8,6 @@ class Search extends StatefulWidget {
 }
 
 class _SearchState extends State<Search> {
-  late Future<Movie> futureMovie;
   Icon customIcon = const Icon(Icons.search);
   Widget customSearchBar = const Text('Recherche');
 
