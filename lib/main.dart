@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'search.dart';
 import 'film.dart';
+import 'result.dart';
 
 void main() => runApp(const MyApp());
 
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
       routes: <String, WidgetBuilder> {
         '/film': (BuildContext context) => const Film(),
         '/search': (BuildContext context) => const Search(),
+        '/result': (BuildContext context) => const Result(),
       },
     );
   }

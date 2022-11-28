@@ -10,24 +10,28 @@ class Film extends StatefulWidget {
 }
 
 class _FilmState extends State<Film> {
-  late Map<String,dynamic> mapMovie;
+  late bool isInitialized;
+  late Map<String, dynamic> mapMovie;
+  late String id;
 
   @override
   void initState() {
     super.initState();
-    getMap();
+    isInitialized = false;
+    id = "tt0086190";
+    getMap(id);
   }
 
-  void getMap() async{
-    mapMovie = await fetchMovie();
+  void getMap(id) async {
+    mapMovie = await fetchMovie(id);
+    isInitialized = true;
   }
-
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(mapMovie["Title"]),
+        title: const Text("Informations Film"),
         backgroundColor: Colors.black,
       ),
       backgroundColor: const Color(0xFF2C393F),
@@ -36,23 +40,27 @@ class _FilmState extends State<Film> {
           child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text(mapMovie["Title"],
-                    style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold)),
-                Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: Text(mapMovie["Year"],
+                if (!isInitialized)
+                  const Center(child: CircularProgressIndicator())
+                else
+                  Column(children: <Widget>[
+                    Text(mapMovie["Title"],
                         style: const TextStyle(
-                            color: Colors.white60,
-                            fontWeight: FontWeight.bold))),
-                Image.network(
-                    mapMovie["Poster"]),
-                Padding(
-                    padding: const EdgeInsets.all(15),
-                    child: Text(mapMovie["Plot"],
-                        style: const TextStyle(color: Colors.white70)))
+                            color: Colors.white,
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold)),
+                    Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: Text(mapMovie["Year"],
+                            style: const TextStyle(
+                                color: Colors.white60,
+                                fontWeight: FontWeight.bold))),
+                    Image.network(mapMovie["Poster"]),
+                    Padding(
+                        padding: const EdgeInsets.all(15),
+                        child: Text(mapMovie["Plot"],
+                            style: const TextStyle(color: Colors.white70)))
+                  ]),
               ])),
     );
   }
