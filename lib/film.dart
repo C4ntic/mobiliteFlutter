@@ -18,8 +18,6 @@ class _FilmState extends State<Film> {
   void initState() {
     super.initState();
     isInitialized = false;
-    id = "tt0086190";
-    getMap(id);
   }
 
   void getMap(id) async {
@@ -29,9 +27,11 @@ class _FilmState extends State<Film> {
 
   @override
   Widget build(BuildContext context) {
+    final id = ModalRoute.of(context)!.settings.arguments.toString();
+    getMap(id);
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Informations Film"),
+        title: Text("Informations : $mapMovie['Title']"),
         backgroundColor: Colors.black,
       ),
       backgroundColor: const Color(0xFF2C393F),

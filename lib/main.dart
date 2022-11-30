@@ -17,9 +17,9 @@ class MyApp extends StatelessWidget {
       ),
       home: const Search(),
       routes: <String, WidgetBuilder> {
-        '/film': (BuildContext context) => const Film(),
         '/search': (BuildContext context) => const Search(),
         '/result': (BuildContext context) => const Result(),
+        '/film': (BuildContext context) => const Film(),
       },
     );
   }

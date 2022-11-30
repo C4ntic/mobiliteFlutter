@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'controller/Controller.dart';
 
 class Search extends StatefulWidget {
   const Search({super.key});
@@ -30,10 +29,8 @@ class _SearchState extends State<Search> {
         alignment: Alignment.topCenter,
         child: TextField(
           onSubmitted: (String value) async {
-            print("$value");
-            this.value = "$value";
-            print('la valeur de nahelbok est : ' + this.value);
-            // Navigator.pop();
+            this.value = value;
+            Navigator.pushNamed(context, '/result', arguments: this.value);
           },
           cursorColor: Colors.grey,
           decoration: InputDecoration(
@@ -44,14 +41,14 @@ class _SearchState extends State<Search> {
                   borderSide: BorderSide.none
               ),
               hintText: 'Search',
-              hintStyle: TextStyle(
+              hintStyle: const TextStyle(
                   color: Colors.grey,
                   fontSize: 18
               ),
               prefixIcon: Container(
-                padding: EdgeInsets.all(15),
-                child: Image.asset('assets/icons/search.png'),
+                padding: const EdgeInsets.all(15),
                 width: 18,
+                child: Image.asset('assets/icons/search.png'),
               )
           ),
         ),),

@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-
 import 'controller/Controller.dart';
 
 class Result extends StatefulWidget {
   const Result({super.key});
 
   @override
-  State<Result> createState() => _FilmState();
+  State<Result> createState() => _ResultState();
 }
 
-class _FilmState extends State<Result> {
+class _ResultState extends State<Result> {
   late bool isInitialized;
   late Map<String, dynamic> mapSearch;
   late String search;
@@ -18,8 +17,6 @@ class _FilmState extends State<Result> {
   void initState() {
     super.initState();
     isInitialized = false;
-    search = "Star";
-    getMap(search);
   }
 
   void getMap(search) async {
@@ -29,6 +26,8 @@ class _FilmState extends State<Result> {
 
   @override
   Widget build(BuildContext context) {
+    final search = ModalRoute.of(context)!.settings.arguments.toString();
+    getMap(search);
     return Scaffold(
       appBar: AppBar(
         title: Text("Result of : $search"),
@@ -48,7 +47,7 @@ class _FilmState extends State<Result> {
                       padding: const EdgeInsets.all(15),
                       child: ElevatedButton(
                           onPressed: () {
-                            Navigator.pushNamed(context, '/film');
+                            Navigator.pushNamed(context, '/film', arguments: mapSearch["Search"][i]["imdbID"]);
                           },
                           child: Text(mapSearch["Search"][i]["Title"])),
                     ),
