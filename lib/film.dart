@@ -22,7 +22,9 @@ class _FilmState extends State<Film> {
 
   void getMap(id) async {
     mapMovie = await fetchMovie(id);
-    isInitialized = true;
+    setState(() {
+      isInitialized = true;
+    });
   }
 
   @override
@@ -31,7 +33,7 @@ class _FilmState extends State<Film> {
     getMap(id);
     return Scaffold(
       appBar: AppBar(
-        title: Text("Informations : $mapMovie['Title']"),
+        title: Text(mapMovie['Title']),
         backgroundColor: Colors.black,
       ),
       backgroundColor: const Color(0xFF2C393F),

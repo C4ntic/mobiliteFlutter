@@ -21,7 +21,9 @@ class _ResultState extends State<Result> {
 
   void getMap(search) async {
     mapSearch = await fetchSearch(search);
-    isInitialized = true;
+    setState(() {
+      isInitialized = true;
+    });
   }
 
   @override
@@ -30,7 +32,7 @@ class _ResultState extends State<Result> {
     getMap(search);
     return Scaffold(
       appBar: AppBar(
-        title: Text("Result of : $search"),
+        title: Text("Résulat de : $search"),
         backgroundColor: Colors.black,
       ),
       backgroundColor: const Color(0xFF2C393F),
@@ -47,7 +49,8 @@ class _ResultState extends State<Result> {
                       padding: const EdgeInsets.all(15),
                       child: ElevatedButton(
                           onPressed: () {
-                            Navigator.pushNamed(context, '/film', arguments: mapSearch["Search"][i]["imdbID"]);
+                            Navigator.pushNamed(context, '/film',
+                                arguments: mapSearch["Search"][i]["imdbID"]);
                           },
                           child: Text(mapSearch["Search"][i]["Title"])),
                     ),

@@ -40,7 +40,7 @@ class _SearchState extends State<Search> {
                   borderRadius: BorderRadius.circular(10),
                   borderSide: BorderSide.none
               ),
-              hintText: 'Search',
+              hintText: 'Rechercher un film..',
               hintStyle: const TextStyle(
                   color: Colors.grey,
                   fontSize: 18
