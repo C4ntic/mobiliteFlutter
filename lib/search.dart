@@ -40,7 +40,7 @@ class _SearchState extends State<Search> {
                   borderRadius: BorderRadius.circular(10),
                   borderSide: BorderSide.none
               ),
-              hintText: 'Rechercher un film..',
+              hintText: 'Rechercher un film ou une série..',
               hintStyle: const TextStyle(
                   color: Colors.grey,
                   fontSize: 18
@@ -48,7 +48,7 @@ class _SearchState extends State<Search> {
               prefixIcon: Container(
                 padding: const EdgeInsets.all(15),
                 width: 18,
-                child: Image.asset('assets/icons/search.png'),
+                child: Image.asset('../assets/Images/searchIcon.png'),
               )
           ),
         ),),
